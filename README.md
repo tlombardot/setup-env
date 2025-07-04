@@ -14,6 +14,8 @@ Ils permettent de :
 
 Le scripting est une compétence essentielle pour tout développeur, car il permet de gagner du temps, d'améliorer la reproductibilité et de garantir la cohérence des configurations.
 
+<img src="img/setup-env.webp" alt="Setup Environment" height="400"/>
+
 ## Pourquoi Scripter son Environnement de Développement ?
 ### 1. Reproductibilité
 L'un des principaux avantages de scripter votre environnement de développement est la reproductibilité. 
@@ -104,15 +106,15 @@ chmod +x demo.sh
 ```
 
 ## Scripter son Environnement de Développement
-![Lan Party](img/lan-party.jpg)
+![Lan Party](img/lan-party.webp)
 
-- [Installer les pré-requis](PRÉ-REQUIS.md)
+- [Installer les pré-requis](PRE-REQUIS.md)
 - Installer [`Visual Studio Code`](https://code.visualstudio.com/) via `install-vs.sh` qui vous permettra de visualiser / adapter les scripts
 - Installer `git` en lançant le script `install-git`
    - Tester que tout est correct en lançant la commande suivante `git`
    - Vous devriez avoir la sortie suivante :
 
-![git](img/git.png)
+![git](img/git.webp)
 
 - Installer `gcc` en lançant le script correspondant `install-c`
 - Tester que vous pouvez compiler via
