@@ -12,7 +12,4 @@ sudo xcodebuild -license accept
 # Installer gcc via Homebrew
 brew install gcc
 
-# Installer SDL2 via Homebrew
-brew install sdl2
-
-echo "gcc et sdl2 ont été installés avec succès."
+echo "gcc a bien été installé avec succès."

@@ -125,23 +125,6 @@ gcc hello.c -o hello
 
 # Vous devriez voir "Hello, World!"
 ```
-- On va tester `sdl2` également via
-
-```shell
-# Windows
-gcc hello_from_sdl2.c -IC:/sdl2/include -LC:/sdl2/lib -lSDL2 -o hello_from_sdl2.exe
-
-# MacOS
-gcc hello_from_sdl2.c \
-  -I/opt/homebrew/include/SDL2 \
-  -L/opt/homebrew/lib -lSDL2 \
-  -o hello_from_sdl2
-
-codesign --force --deep --sign - hello_from_sdl2
-
-# Linux
-gcc hello_from_sdl2.c $(sdl2-config --cflags --libs) -o hello_from_sdl2
-```
 
 - Installer [docker](https://www.docker.com/) via `install-docker`
    - Valider l'installation de docker en démarrant 1 container `php` via `install-php`

@@ -8,7 +8,4 @@ if ($envPath -notlike "*$mingwPath*") {
     [Environment]::SetEnvironmentVariable("Path", $envPath + ";" + $mingwPath, "Machine")
 }
 
-# Installer SDL2 via Chocolatey
-choco install sdl2 -y
-
-Write-Output "GCC et SDL2 ont été installés avec succès."
+Write-Output "GCC a été installé avec succès."
