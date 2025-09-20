@@ -1,3 +1,4 @@
+#!/bin/bash
 # Installer OpenJDK (JDK) : https://openjdk.org/
 brew install openjdk
 

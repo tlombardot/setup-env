@@ -142,7 +142,7 @@ npm -v
 ```
 
 
-## Créer votre compte GitHub
+## Créer ton compte GitHub
 Pour les besoins des cours, chaque étudiant·e doit disposer d’un compte GitHub.
 
 1. Rendez-vous sur [https://github.com/](https://github.com/)
@@ -154,3 +154,6 @@ Pour les besoins des cours, chaque étudiant·e doit disposer d’un compte GitH
    - Validez l’adresse e-mail
 4. Une fois votre compte créé et activé, connectez-vous.
 
+# Livrable attendu
+* [Instructions](LIVRABLE.md)
+* [Barème de notation](BAREME.md)
