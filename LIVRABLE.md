@@ -103,4 +103,13 @@ if (-not (Has "gcc")) {
 ## Rendu attendu
 * Le lien vers ton **fork GitHub**.
 * Le fichier `install.sh` (Linux/macOS) ou `install.ps1` (Windows) à la racine, exécutable.
-* Les **résultats des 2 runs** de ton script (copie des sorties console ou imprime écran).
+* Les **résultats des 2 runs** de ton script `run1.log` et `run2.log` (copie des sorties console cf ci-dessous).
+* Le résultat du run du script `check-install` :
+
+```shell
+# sur MacOS ou Linux
+sh check-install.sh > check-result.log
+
+# sur Windows
+.\check-install.ps1 > check-result.log
+```

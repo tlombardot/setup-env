@@ -141,7 +141,6 @@ node -v
 npm -v
 ```
 
-
 ## Créer ton compte GitHub
 Pour les besoins des cours, chaque étudiant·e doit disposer d’un compte GitHub.
 
