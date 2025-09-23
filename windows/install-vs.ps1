@@ -1,4 +1,4 @@
-# Installer Visual Studio Code avec Chocolatey
+﻿# Installer Visual Studio Code avec Chocolatey
 Write-Host "Installation de Visual Studio Code..."
 choco install vscode -y
 Start-Sleep -Seconds 5

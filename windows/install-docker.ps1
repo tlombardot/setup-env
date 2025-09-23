@@ -1,4 +1,4 @@
-# Installer Docker Desktop via Chocolatey
+﻿# Installer Docker Desktop via Chocolatey
 Write-Output "Installation de Docker Desktop..."
 choco install docker-desktop -y
 

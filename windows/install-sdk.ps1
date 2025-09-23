@@ -1,4 +1,4 @@
-# Installer OpenJDK (JDK) : https://openjdk.org/
+﻿# Installer OpenJDK (JDK) : https://openjdk.org/
 choco install openjdk -y
 
 # Installer Node.js (et npm) : https://nodejs.org/en

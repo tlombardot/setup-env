@@ -1,25 +1,18 @@
-$GREEN = "`e[32m"
-$RED   = "`e[31m"
-$YELLOW= "`e[33m"
-$NC    = "`e[0m"
-
+﻿Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force | Out-Null
 $global:missing = $false
 
-function Has($cmd) {
-    return [bool](Get-Command $cmd -ErrorAction SilentlyContinue)
+function Ok   ($msg){
+    Write-Host "[OK] $msg" -ForegroundColor Green
 }
-
-function Ok($msg) {
-    Write-Host "$GREEN[OK]$NC $msg"
+function Err  ($msg){
+    Write-Host "[ERREUR] $msg" -ForegroundColor Red
+    $script:FAILED = $true
 }
-
-function Err($msg) {
-    Write-Host "$RED[ABSENT]$NC $msg"
-    $global:missing = $true
+function Info ($msg){
+    Write-Host "[INFO] $msg" -ForegroundColor Yellow
 }
-
-function Info($msg) {
-    Write-Host "$YELLOW[INFO]$NC $msg"
+function Has  ($cmd){
+    [bool](Get-Command $cmd -ErrorAction SilentlyContinue)
 }
 
 function Check-Cmd($cmd, $label=$null) {

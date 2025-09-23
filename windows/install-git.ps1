@@ -1,4 +1,4 @@
-# Installer Git
+﻿# Installer Git
 choco install git -y
 
 # Installer github-desktop : https://github.com/apps/desktop

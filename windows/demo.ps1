@@ -1,4 +1,4 @@
-# Définir les couleurs
+﻿# Définir les couleurs
 $green = "Green"
 $magenta = "Magenta"
 

@@ -1,4 +1,4 @@
-# Lancer une image PHP avec la dernière version
+﻿# Lancer une image PHP avec la dernière version
 Write-Output "Lancement d'une image PHP avec la dernière version..."
 docker run -d --name php-container -p 8080:80 php:latest
 

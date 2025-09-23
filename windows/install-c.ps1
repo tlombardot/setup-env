@@ -1,4 +1,4 @@
-# Installer MinGW qui inclut GCC
+﻿# Installer MinGW qui inclut GCC
 choco install mingw -y
 
 # Ajouter MinGW au PATH
