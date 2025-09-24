@@ -21,7 +21,7 @@ check_pacman() {
     ok "$label détecté : ${version:-version indisponible}\n"
     info "Déjà installé\n"
   else
-    #err "$label non installé"
+    err "$label non installé"
     sudo pacman -S $3
     mark_missing
   fi

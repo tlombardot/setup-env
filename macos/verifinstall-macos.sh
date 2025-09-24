@@ -21,7 +21,7 @@ check_brew() {
     ok "$label détecté : ${version:-version indisponible}\n"
     info "Déjà installé\n"
   else
-    #err "$label non installé"
+    err "$label non installé"
     brew install $3
     mark_missing
   fi

@@ -1,5 +1,10 @@
+#!/bin/bash
+
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force | Out-Null
 $global:missing = $false
+
+
+
 
 function Ok   ($msg){
     Write-Host "[OK] $msg" -ForegroundColor Green
@@ -15,7 +20,8 @@ function Has  ($cmd){
     [bool](Get-Command $cmd -ErrorAction SilentlyContinue)
 }
 
-function check-choco($cmd, $label=$null) {
+function check-choco($cmd, $label=$null, $3) {
+    Write-Host "Verification $cmd" -ForegroundColor Yellow
     if (-not $label) { $label = $cmd }
     if (Has $cmd) {
         try {
@@ -33,7 +39,7 @@ function Check-VSCode-Cpptools {
         Err "VS Code non installé (binaire 'code' introuvable) — impossible de vérifier l’extension C/C++"
         return
     }
-
+    Write-Host "Vérification Extensions VSCode" -ForegroundColor Yellow
     $exts = code --list-extensions 2>$null
     if ($exts -match "^ms-vscode.cpptools$") {
         Ok "Extension VS Code 'ms-vscode.cpptools' installée"
@@ -43,7 +49,9 @@ function Check-VSCode-Cpptools {
     }
 }
 
-Write-Host "=== Vérification des installations (Windows) ==="
+
+Write-Host "=== Vérification des installations (Windows) ===
+ " -ForegroundColor Red
 
 check-choco "gcc"   "GCC (compilateur)" "mingw"
 check-choco "git"   "Git (gestion de version)" "git"
