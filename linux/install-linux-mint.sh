@@ -14,7 +14,7 @@ info() { echo "${YELLOW}[INFO]${NC} $*"; }
 missing=0
 mark_missing() { missing=1; }
 
-check_cmd() {
+check_gcc() {
   local cmd="$1"
   local label="${2:-$1}"
   if has "$cmd"; then
@@ -22,13 +22,80 @@ check_cmd() {
     ok "$label détecté : ${version:-version indisponible}"
   else
     err "$label non installé"
+    sudo apt-get install -y gcc
     mark_missing
   fi
 }
 
+check_git() {
+  local cmd="$1"
+  local label="${2:-$1}"
+  if has "$cmd"; then
+    local version="$($cmd --version 2>/dev/null | head -n1 || true)"
+    ok "$label détecté : ${version:-version indisponible}"
+  else
+    err "$label non installé"
+    sudo apt install git-all
+    mark_missing
+  fi
+}
+
+check_docker() {
+  local cmd="$1"
+  local label="${2:-$1}"
+  if has "$cmd"; then
+    local version="$($cmd --version 2>/dev/null | head -n1 || true)"
+    ok "$label détecté : ${version:-version indisponible}"
+  else
+    err "$label non installé"
+    sudo apt-get update
+    sudo apt-get install ca-certificates curl
+    sudo install -m 0755 -d /etc/apt/keyrings
+    sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+    sudo chmod a+r /etc/apt/keyrings/docker.asc
+    echo \
+      "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+      $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
+      sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    sudo apt-get update
+    sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+    mark_missing
+  fi
+}
+check_node() {
+  local cmd="$1"
+  local label="${2:-$1}"
+  if has "$cmd"; then
+    local version="$($cmd --version 2>/dev/null | head -n1 || true)"
+    ok "$label détecté : ${version:-version indisponible}"
+  else
+    err "$label non installé"
+    sudo apt update
+    sudo apt install nodejs npm
+    mark_missing
+  fi
+}
+check_jdk() {
+  local cmd="$1"
+  local label="${2:-$1}"
+  if has "$cmd"; then
+    local version="$($cmd --version 2>/dev/null | head -n1 || true)"
+    ok "$label détecté : ${version:-version indisponible}"
+  else
+    err "$label non installé"
+    sudo apt update
+    sudo apt install default-jdk
+    mark_missing
+  fi
+}
+
+
+
+
 check_vscode_cpptools() {
   if ! has code; then
     err "VS Code non installé (binaire 'code' introuvable) — impossible de vérifier l’extension C/C++"
+
     mark_missing
     return
   fi
@@ -50,13 +117,13 @@ check_vscode_cpptools() {
 
 echo "=== Vérification des installations==="
 
-check_cmd gcc   "GCC (compilateur)"
-check_cmd git   "Git (gestion de version)"
-check_cmd docker "Docker"
-check_cmd node  "Node.js"
-check_cmd npm   "npm"
+check_gcc gcc   "GCC (compilateur)" gcc
+check_git git   "Git (gestion de version)" git
+check_docker docker "Docker" docker
+check_node node  "Node.js" node
+check_cmd npm   "npm" npm
 check_cmd code  "Visual Studio Code"
-check_cmd java  "Java (OpenJDK)"
+check_jdk java  "Java (OpenJDK)" jdk
 
 check_vscode_cpptools
 
