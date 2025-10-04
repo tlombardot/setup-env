@@ -35,7 +35,7 @@ check_git() {
     ok "$label détecté : ${version:-version indisponible}"
   else
     err "$label non installé"
-    sudo apt install git-all
+    sudo apt install -y git-all
     mark_missing
   fi
 }
@@ -59,6 +59,7 @@ check_docker() {
       sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
     sudo apt-get update
     sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+    sudo usermod -aG docker
     mark_missing
   fi
 }
@@ -71,7 +72,7 @@ check_node() {
   else
     err "$label non installé"
     sudo apt update
-    sudo apt install nodejs npm
+    sudo apt install -y nodejs npm
     mark_missing
   fi
 }
@@ -84,7 +85,7 @@ check_jdk() {
   else
     err "$label non installé"
     sudo apt update
-    sudo apt install default-jdk
+    sudo apt install -y default-jdk
     mark_missing
   fi
 }
@@ -121,8 +122,6 @@ check_gcc gcc   "GCC (compilateur)" gcc
 check_git git   "Git (gestion de version)" git
 check_docker docker "Docker" docker
 check_node node  "Node.js" node
-check_cmd npm   "npm" npm
-check_cmd code  "Visual Studio Code"
 check_jdk java  "Java (OpenJDK)" jdk
 
 check_vscode_cpptools
